@@ -16,8 +16,8 @@
 
   <title>Lecture 2.11</title>
   <style>
-    #star{
-      position:absolute;
+    #star {
+      position: absolute;
       left: 200px;
       top: 150px;
     }
@@ -25,15 +25,28 @@
 </head>
 
 <body>
-    <div id="star">
-      <img src="../../assets/star-icon.png" />
-    </div>
-    <script type="module">
-      import {Vec} from './Vec.js';
+  <div id="star">
+    <img src="../../assets/star-icon.png" />
+  </div>
+  <script type="module">
+    import { Vec } from './Vec.js';
 
-      console.clear();
-      
-    </script>
+    console.clear();
+
+    const a = new Vec();
+    const b = new Vec(4, 0);
+    const c = new Vec(4, 3);
+
+    console.log(`The distance from a to c is ${a.distanceTo(c).toFixed(2)}`);
+
+    // function distanceTo(pt) {
+    //   const delta = this.clone().sub(pt);
+
+    //   return Math.sqrt(delta.x * delta.x + delta.y * delta.y)
+    // }
+
+    console.log(`The angle between b and c is ${b.angleBetween(c).toFixed(2)}`);
+  </script>
 </body>
 
 </html>
