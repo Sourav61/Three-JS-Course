@@ -18,9 +18,31 @@
 </head>
 
 <body>
-    <script>
-     
-    </script>
+  <script>
+    fetch('./characters.json')
+      .then(response => response.json())
+      .then(obj => {
+        obj.forEach(ele => {
+          console.log(ele);
+        });
+      }).catch(err => {
+        console.log(err);
+      })
+
+    fetch('./planetinfo.json')
+      .then(response => response.json())
+      .then(obj => {
+        displayFacts(obj.planets)
+      }).catch(err => console.log(err));
+
+    function displayFacts(planets) {
+      const largest = planets.reduce((acc, loc) => acc.radius > loc.radius ? acc : loc);
+      console.log('Planet with the largest radius is: ', largest.name);
+
+      const smallest = planets.reduce((acc, loc) => acc.radius < loc.radius ? acc : loc);
+      console.log(`Planet with the smallest radius is: ' ${smallest.name}`);
+    }
+  </script>
 </body>
 
 </html>

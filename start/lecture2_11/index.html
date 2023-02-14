@@ -17,9 +17,12 @@
   <title>Lecture 2.11</title>
   <style>
     #star {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90%;
+      width: 90%;
       position: absolute;
-      left: 200px;
-      top: 150px;
     }
   </style>
 </head>
@@ -46,6 +49,25 @@
     // }
 
     console.log(`The angle between b and c is ${b.angleBetween(c).toFixed(2)}`);
+
+    const center = new Vec(-20, -100);
+    const radius = 150;
+    let theta = 0;
+
+    const star = document.getElementById('star');
+
+    rotateStar();
+    function rotateStar() {
+      requestAnimationFrame(rotateStar);
+
+      theta += 0.05;
+
+      const x = Math.sin(theta) * radius + center.x;
+      const y = Math.cos(theta) * radius + center.y;
+
+      star.style.left = `${x}px`;
+      star.style.top = `${y}px`;
+    }
   </script>
 </body>
 
